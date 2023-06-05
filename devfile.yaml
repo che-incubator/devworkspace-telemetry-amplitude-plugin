@@ -1,0 +1,28 @@
+schemaVersion: 2.2.0
+metadata:
+  name: devworkspace-telemetry-plugin
+components:
+  - name: tools
+    container:
+      image: quay.io/devfile/universal-developer-image:ubi8-latest
+      mountSources: true
+      memoryLimit: 12Gi
+      volumeMounts:
+        - name: m2
+          path: /home/user/.m2
+  - name: m2
+    volume:
+      size: 1G
+commands:
+  - id: package
+    exec:
+      label: "Package"
+      component: tools
+      workingDir: ${PROJECT_SOURCE}
+      commandLine: "./mvnw clean package"
+  - id: build-jvm-image
+    exec:
+      label: "Build JVM image"
+      component: tools
+      workingDir: ${PROJECT_SOURCE}
+      commandLine: "podman build -f src/main/docker/Dockerfile.jvm -t quay.io/username/devworkspace-telemetry-amplitude-plugin:next"
