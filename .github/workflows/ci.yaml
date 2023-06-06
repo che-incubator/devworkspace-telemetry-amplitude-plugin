@@ -1,0 +1,49 @@
+name: woopra-plugin CI
+
+env:
+  ORGANIZATION: 'eclipse'
+  TAG: 'latest'
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: DeLaGuardo/setup-graalvm@5.0
+        with:
+          graalvm: '21.3.1'
+          java: 'java11'
+      - name: Install native-image component
+        run: |
+          gu install native-image
+      - name: Build
+        run: |
+          ./mvnw --settings settings.xml clean package -Pnative -DskipTests
+        env:
+          GITHUB_USERNAME: x-access-token
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+      - name: Build image
+        run: |
+          docker build -t quay.io/${ORGANIZATION}/devworkspace-telemetry-woopra-plugin:${TAG} -f src/main/docker/Dockerfile.native .
+      - name: set LATEST_IMAGE environment variable
+        run: echo "LATEST_IMAGE=quay.io/${ORGANIZATION}/devworkspace-telemetry-woopra-plugin:${TAG}" >> $GITHUB_ENV
+      - name: set SHA_IMAGE environment variable
+        run: echo "SHA_IMAGE=quay.io/${ORGANIZATION}/devworkspace-telemetry-woopra-plugin:${GITHUB_SHA:0:7}" >> $GITHUB_ENV
+      - name: tag SHA_IMAGE
+        run: docker tag $LATEST_IMAGE $SHA_IMAGE
+      - name: Log into docker registry
+        run: docker login ${REGISTRY} -u ${USERNAME} -p ${PASSWORD}
+        env:
+          REGISTRY: quay.io
+          USERNAME: ${{ secrets.QUAY_USERNAME }}
+          PASSWORD: ${{ secrets.QUAY_PASSWORD }}
+      - name: Push image latest
+        run: docker push $LATEST_IMAGE
+      - name: Push image sha
+        run: docker push $SHA_IMAGE
+        env:
+          TAG: ${GITHUB_SHA:0:7}
