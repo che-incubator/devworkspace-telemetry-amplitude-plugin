@@ -9,9 +9,11 @@
  * Contributors:
  *   Red Hat, Inc. - initial API and implementation
  */
-package com.redhat.devworkspace.services.telemetry.woopra;
+package com.redhat.devworkspace.services.telemetry.amplitude;
 
 import java.util.Optional;
+
+import com.redhat.devworkspace.services.telemetry.amplitude.MainConfiguration;
 
 public class MainConfigurationBuilder {
 

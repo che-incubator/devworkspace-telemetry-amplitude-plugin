@@ -9,7 +9,7 @@
  * Contributors:
  *   Red Hat, Inc. - initial API and implementation
  */
-package com.redhat.devworkspace.services.telemetry.woopra;
+package com.redhat.devworkspace.services.telemetry.amplitude;
 
 import com.segment.analytics.Analytics;
 import io.fabric8.kubernetes.api.model.GenericKubernetesResource;

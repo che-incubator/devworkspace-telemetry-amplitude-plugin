@@ -9,7 +9,7 @@
  * Contributors:
  *   Red Hat, Inc. - initial API and implementation
  */
-package com.redhat.devworkspace.services.telemetry.woopra;
+package com.redhat.devworkspace.services.telemetry.amplitude;
 
 import org.eclipse.che.api.core.rest.DefaultHttpJsonRequestFactory;
 import org.eclipse.che.api.core.rest.HttpJsonRequestFactory;

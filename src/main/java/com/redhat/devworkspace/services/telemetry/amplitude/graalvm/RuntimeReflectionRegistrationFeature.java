@@ -9,7 +9,7 @@
  * Contributors:
  *   Red Hat, Inc. - initial API and implementation
  */
-package com.redhat.devworkspace.services.telemetry.woopra.graalvm;
+package com.redhat.devworkspace.services.telemetry.amplitude.graalvm;
 
 import com.google.common.collect.Streams;
 import com.oracle.svm.core.annotate.AutomaticFeature;

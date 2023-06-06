@@ -9,7 +9,7 @@
  * Contributors:
  *   Red Hat, Inc. - initial API and implementation
  */
-package com.redhat.devworkspace.services.telemetry.woopra.exception;
+package com.redhat.devworkspace.services.telemetry.amplitude.exception;
 
 public class WoopraCredentialException extends RuntimeException {
 

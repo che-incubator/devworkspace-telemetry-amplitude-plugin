@@ -9,9 +9,12 @@
  * Contributors:
  *   Red Hat, Inc. - initial API and implementation
  */
-package com.redhat.devworkspace.services.telemetry.woopra;
+package com.redhat.devworkspace.services.telemetry.amplitude;
 
-import com.redhat.devworkspace.services.telemetry.woopra.exception.WoopraCredentialException;
+import com.redhat.devworkspace.services.telemetry.amplitude.AnalyticsManager;
+import com.redhat.devworkspace.services.telemetry.amplitude.HttpUrlConnectionProvider;
+import com.redhat.devworkspace.services.telemetry.amplitude.MainConfiguration;
+import com.redhat.devworkspace.services.telemetry.amplitude.exception.WoopraCredentialException;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;

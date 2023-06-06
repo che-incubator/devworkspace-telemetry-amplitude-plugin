@@ -9,7 +9,7 @@
  * Contributors:
  *   Red Hat, Inc. - initial API and implementation
  */
-package com.redhat.devworkspace.services.telemetry.woopra;
+package com.redhat.devworkspace.services.telemetry.amplitude;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.cache.CacheBuilder;
@@ -19,7 +19,7 @@ import com.google.common.cache.RemovalNotification;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.hash.Hashing;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import com.redhat.devworkspace.services.telemetry.woopra.exception.WoopraCredentialException;
+import com.redhat.devworkspace.services.telemetry.amplitude.exception.WoopraCredentialException;
 import com.segment.analytics.Analytics;
 import com.segment.analytics.messages.TrackMessage;
 import org.eclipse.che.incubator.workspace.telemetry.base.AbstractAnalyticsManager;
