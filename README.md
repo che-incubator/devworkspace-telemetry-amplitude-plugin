@@ -1,4 +1,4 @@
-# devworkspace-telemetry-woopra-plugin
+# devworkspace-telemetry-amplitude-plugin
 
 ## Prerequisites
 
@@ -66,16 +66,14 @@ After building the application with either methods above, run:
 docker build -f src/main/docker/Dockerfile.native -t image-name:tag .
 ```
 
-## Setting Segment and Woopra credentials
-There are four configuration properties used to provide Woopra and Segment credentials. Refer to [MainConfiguration.java](https://github.com/che-incubator/devworkspace-telemetry-woopra-plugin/blob/master/src/main/java/com/redhat/che/workspace/services/telemetry/woopra/MainConfiguration.java
+## Setting the Segment credentials
+There are two configuration properties used to provide the Segment credentials. Refer to [MainConfiguration.java](https://github.com/che-incubator/devworkspace-telemetry-amplitude-plugin/blob/master/src/main/java/com/redhat/che/workspace/services/telemetry/amplitude/MainConfiguration.java
 ). These properties can be set via environment variables.
 
 | Environment variable         | Description |
 | ---------------------------- | ----------- |
-| `WOOPRA_DOMAIN`              | The Woopra domain to send events to.       |
-| `SEGMENT_WRITE_KEY`          | The write key to send events to Segment and Woopra.|
-| `WOOPRA_DOMAIN_ENDPOINT`     | The HTTP endpoint that returns the Woopra domain. The endpoint will be accessed if `WOOPRA_DOMAIN` is not provided. |
-| `SEGMENT_WRITE_KEY_ENDPOINT` | The HTTP endpoint that returns the Segment write key. The endpoint will be accessed if `SEGMENT_WRITE_KEY` is not provided. |
+| `SEGMENT_WRITE_KEY`          | The write key to send events to Segment.|
+| `SEGMENT_WRITE_KEY_ENDPOINT` | The HTTP endpoint that returns the Segment write key. The endpoint will be used if `SEGMENT_WRITE_KEY` is not provided. |
 
 ## Running Tests
 ```
@@ -103,7 +101,7 @@ In the root of this repository, run:
 docker run -w /root/app -v $(pwd):/root/app -v \
   /path/to/akamai-auth.conf:/root/.akamai-cli/.netstorage/auth \
   akamai/cli netstorage upload \
-  --directory che/plugins/eclipse/che-workspace-telemetry-woopra-plugin/0.0.1 \
+  --directory che/plugins/eclipse/che-workspace-telemetry-amplitude-plugin/0.0.1 \
   meta.yaml
 ```
 ## Trademark

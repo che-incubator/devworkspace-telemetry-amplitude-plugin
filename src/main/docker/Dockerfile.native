@@ -7,11 +7,11 @@
 #
 # Then, build the image with:
 #
-# docker build -f src/main/docker/Dockerfile.native -t quarkus/telemetry-woopra-plugin .
+# docker build -f src/main/docker/Dockerfile.native -t quarkus/telemetry-amplitude-plugin .
 #
 # Then run the container using:
 #
-# docker run -i --rm -p 8080:8080 quarkus/telemetry-woopra-plugin
+# docker run -i --rm -p 8080:8080 quarkus/telemetry-amplitude-plugin
 #
 ###
 FROM quay.io/quarkus/quarkus-micro-image:1.0

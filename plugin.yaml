@@ -1,11 +1,11 @@
 schemaVersion: 2.1.0
 metadata:
-  name: devworkspace-telemetry-woopra-plugin
+  name: devworkspace-telemetry-amplitude-plugin
   version: 0.0.1
-  description: Telemetry plugin for sending information to Woopra
-  displayName: Woopra Telemetry Plugin
+  description: Telemetry plugin for sending information to Amplitude Actions via Segment
+  displayName: Amplitude Telemetry Plugin
 components:
-  - name: devworkspace-telemetry-woopra-plugin
+  - name: devworkspace-telemetry-amplitude-plugin
     attributes:
       app.kubernetes.io/component: telemetry
       app.kubernetes.io/part-of: che-theia.eclipse.org
@@ -13,9 +13,7 @@ components:
         - name: DEVWORKSPACE_TELEMETRY_BACKEND_PORT
           value: '4167'
     container:
-      image: quay.io/eclipse/devworkspace-telemetry-woopra-plugin:latest
+      image: quay.io/eclipse/devworkspace-telemetry-amplitude-plugin:latest
       env:
-        - name: WOOPRA_DOMAIN
-          value: $WOOPRA_DOMAIN
         - name: SEGMENT_WRITE_KEY
           value: $SEGMENT_WRITE_KEY

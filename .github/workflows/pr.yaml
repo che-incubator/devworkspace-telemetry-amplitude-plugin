@@ -1,4 +1,4 @@
-name: woopra-plugin PR check
+name: amplitude-plugin PR check
 
 env:
   ORGANIZATION: 'eclipse'
@@ -28,4 +28,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
       - name: Build image
         run: |
-          docker build -t quay.io/${ORGANIZATION}/devworkspace-telemetry-woopra-plugin:${TAG} -f src/main/docker/Dockerfile.native .
+          docker build -t quay.io/${ORGANIZATION}/devworkspace-telemetry-amplitude-plugin:${TAG} -f src/main/docker/Dockerfile.native .

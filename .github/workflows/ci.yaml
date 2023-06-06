@@ -1,4 +1,4 @@
-name: woopra-plugin CI
+name: amplitude-plugin CI
 
 env:
   ORGANIZATION: 'eclipse'
@@ -28,11 +28,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
       - name: Build image
         run: |
-          docker build -t quay.io/${ORGANIZATION}/devworkspace-telemetry-woopra-plugin:${TAG} -f src/main/docker/Dockerfile.native .
+          docker build -t quay.io/${ORGANIZATION}/devworkspace-telemetry-amplitude-plugin:${TAG} -f src/main/docker/Dockerfile.native .
       - name: set LATEST_IMAGE environment variable
-        run: echo "LATEST_IMAGE=quay.io/${ORGANIZATION}/devworkspace-telemetry-woopra-plugin:${TAG}" >> $GITHUB_ENV
+        run: echo "LATEST_IMAGE=quay.io/${ORGANIZATION}/devworkspace-telemetry-amplitude-plugin:${TAG}" >> $GITHUB_ENV
       - name: set SHA_IMAGE environment variable
-        run: echo "SHA_IMAGE=quay.io/${ORGANIZATION}/devworkspace-telemetry-woopra-plugin:${GITHUB_SHA:0:7}" >> $GITHUB_ENV
+        run: echo "SHA_IMAGE=quay.io/${ORGANIZATION}/devworkspace-telemetry-amplitude-plugin:${GITHUB_SHA:0:7}" >> $GITHUB_ENV
       - name: tag SHA_IMAGE
         run: docker tag $LATEST_IMAGE $SHA_IMAGE
       - name: Log into docker registry
